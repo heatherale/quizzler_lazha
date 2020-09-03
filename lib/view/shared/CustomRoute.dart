@@ -4,9 +4,9 @@ import 'file:///E:/flutter_courses/quizzler-flutter/lib/view/ui/screens/home_scr
 class CustomRoute{
 
   static const String HOME_SCREEN = '/';
-  static const String TRUE_OR_FALSE = 'true_or_false_quiz';
-  static const String MULTIPLE_ANSWERS = 'multiple_answers_quiz';
-  static const String RESULT_PAGE = 'result_page';
+  static const String TRUE_OR_FALSE = 'trueorfalse';
+  static const String MULTIPLE_ANSWERS = 'oneanswer';
+  static const String RESULT_PAGE = 'result';
 
   static Route<dynamic> generateRoute(RouteSettings settings){
 
@@ -18,6 +18,7 @@ class CustomRoute{
       case HOME_SCREEN:
         screen = HomeScreen();
         break;
+
     }
 
     return MaterialPageRoute(
