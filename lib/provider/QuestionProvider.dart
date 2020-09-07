@@ -9,9 +9,10 @@ class QuestionProvider extends ChangeNotifier{
   int _currentIndex;
   int _testResult;
 
-  void fetchData(QuestionType type) async {
-    _currentList = await QuestionHelper(type).getQuestionList();
-    print("Provider here. Current list" + _currentList.toString());
+  Future<List<Question>> fetchData(QuestionType type) async {
+    List<Question> listToReturn =  await QuestionHelper(type).getQuestionList();
+    print('PROVIDER HERE. I RETURNED A LIST '+listToReturn[0].questionText);
+    return listToReturn;
   }
 
   void setScoreToZero() {
@@ -19,7 +20,7 @@ class QuestionProvider extends ChangeNotifier{
     _testResult = 0;
   }
 
-  Question get currentQuestion => _currentIndex==_currentList.length?null:_currentList[_currentIndex];
+  Question get currentQuestion => _currentIndex ==_currentList.length?null:_currentList[_currentIndex];
 
   void moveToNextQuestion(){
     if(_currentList[_currentIndex].checkAnswer(_currentIndex)){

@@ -9,8 +9,6 @@ abstract class Question{
   String _rightAnswer;
   List<String> _answers;
 
-  Question({@required int id, @required String questionText, @required String rightAnswer, List<String> answers}):this._id = id, this._questionText = questionText, this._rightAnswer = rightAnswer, this._answers = answers;
-
   int get id => this._id;
 
   String get questionText => this._questionText;

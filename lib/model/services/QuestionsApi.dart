@@ -9,6 +9,7 @@ class QuestionApi{
   Future<String> getQuestionFromUrl(QuestionType typeOfDataFetched) async{
     try{
       final response = await http.get(endpoint+urlParameters[typeOfDataFetched]); //we take the string value from the map typesOfQuestions (models/utils/QuestionType.dart);
+      print('API HERE. I RETURNED A LIST '+response.body);
       return response.body;
     } catch(e) {
       print(e);

@@ -12,33 +12,35 @@ class QuestionFactory{
 
   QuestionFactory(this._type);
 
-  static Question _questionToReturn;
-
-  Question fromJson(String source) => fromMap(json.decode(source));
+  //Question fromJson(String source) => fromMap(json.decode(source));
 
   Question fromMap(Map<String,dynamic> map){
 
+    Question questionToReturn;
+
     switch(_type){
-      case QuestionType.trueorfalse:
-        _questionToReturn = TrueFalseQuestion(
-          id: map['id'],
-          questionText: map['question'],
-            rightAnswer: map['rightAnswer']
-        );
-        break;
-      case QuestionType.oneanswer:
-        _questionToReturn = OneAnswerQuestion(
+      case QuestionType.trueorfalse: {
+        questionToReturn = TrueFalseQuestion(
             id: map['id'],
             questionText: map['question'],
-            answers: map['answers'],
+            rightAnswer: map['rightAnswer'].toString()
+        );
+      } break;
+      case QuestionType.oneanswer: {
+        List<String> castedAnswers = List<String>.from(map['answers']);
+        questionToReturn = OneAnswerQuestion(
+            id: map['id'],
+            questionText: map['question'],
+            answers: castedAnswers,
             rightAnswer: map['rightAnswer']
         );
-        break;
-      default:
+      } break;
+      default: {
         print('Something is wrong');
-        break;
+      } break;
     }
 
-    return _questionToReturn;
+    print('FACTORY HERE. HERE IS MY QUESTION'+questionToReturn.questionText);
+    return questionToReturn;
     }
   }

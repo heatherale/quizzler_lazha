@@ -11,14 +11,19 @@ class AnswerButtonsBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: answers.length,
-      itemBuilder: (context, index){
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          child: AnswerButton(index, Provider.of<ButtonProvider>(context).currentSelectedIndex==index, Provider.of<ButtonProvider>(context, listen: false).toggleSelected(index)),
-        );
-      },
+    print('ANSWERS '+this.answers.toString());
+    return Container(
+      child: ListView.builder(
+        itemCount: answers.length,
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index){
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+            child: AnswerButton(index, Provider.of<ButtonProvider>(context).currentSelectedIndex==index, Provider.of<ButtonProvider>(context, listen: false).toggleSelected(index), answers[index]),
+          );
+        },
+      ),
     );
   }
 }
