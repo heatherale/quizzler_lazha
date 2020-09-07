@@ -19,8 +19,8 @@ class AnswerButtonsBlock extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index){
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-            child: AnswerButton(index, Provider.of<ButtonProvider>(context).currentSelectedIndex==index, Provider.of<ButtonProvider>(context, listen: false).toggleSelected(index), answers[index]),
+            padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 10.0),
+            child: AnswerButton(index, answers[index]),
           );
         },
       ),

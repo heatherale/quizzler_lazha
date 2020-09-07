@@ -11,7 +11,8 @@ class QuestionProvider extends ChangeNotifier{
 
   Future<List<Question>> fetchData(QuestionType type) async {
     List<Question> listToReturn =  await QuestionHelper(type).getQuestionList();
-    print('PROVIDER HERE. I RETURNED A LIST '+listToReturn[0].questionText);
+    //print('PROVIDER HERE. I RETURNED A LIST '+listToReturn[0].questionText);
+    _currentList = listToReturn;
     return listToReturn;
   }
 
@@ -20,11 +21,14 @@ class QuestionProvider extends ChangeNotifier{
     _testResult = 0;
   }
 
-  Question get currentQuestion => _currentIndex ==_currentList.length?null:_currentList[_currentIndex];
+  int get currentIndex => _currentIndex;
 
-  void moveToNextQuestion(){
-    if(_currentList[_currentIndex].checkAnswer(_currentIndex)){
+  //Question get currentQuestion => _currentIndex ==_currentList.length?null:_currentList[_currentIndex];
+
+  void moveToNextQuestion(int index){
+    if(_currentList[_currentIndex].checkAnswer(index)){
       _testResult++;
+      print ("Test result" + _testResult.toString());
     }
     _currentIndex++;
     notifyListeners();

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:quizzler/helpers/CirclePainter.dart';
 import 'package:quizzler/model/core/Question.dart';
 import 'package:quizzler/model/utils/QuestionType.dart';
+import 'package:quizzler/provider/ButtonProvider.dart';
 import 'package:quizzler/provider/QuestionProvider.dart';
 import 'package:quizzler/provider/TypeProvider.dart';
 import 'package:quizzler/view/shared/CustomRoute.dart';
@@ -38,7 +39,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
         if (!snapshot.hasData) {
           columnChildren = <Widget>[Center(child: CircularProgressIndicator())];
       } else {
-        print('QUESTION '+snapshot.data[0].questionText.toString());
         columnChildren = <Widget>[
         Stack(
           alignment: Alignment.center,
@@ -51,11 +51,25 @@ class _QuestionScreenState extends State<QuestionScreen> {
               )
               ),
               Text(
-              snapshot.data[0].questionText??'null',
+                snapshot.data[Provider.of<QuestionProvider>(context).currentIndex].questionText??'null',
               ),
         ],
         ),
-          AnswerButtonsBlock(snapshot.data[0].answers),
+          AnswerButtonsBlock(snapshot.data[Provider.of<QuestionProvider>(context).currentIndex].answers),
+
+          FlatButton(
+            child: Text('Next'),
+            onPressed: (){
+              if(Provider.of<QuestionProvider>(context, listen: false).currentIndex==snapshot.data.length-1){
+                Navigator.pushNamed(
+                    context,
+                    CustomRoute.RESULT_PAGE,
+                );
+              } else{
+                Provider.of<QuestionProvider>(context, listen: false).moveToNextQuestion(Provider.of<ButtonProvider>(context, listen: false).currentSelectedIndex);
+              }
+            },
+          )
         ];
     }
           return SafeArea(
