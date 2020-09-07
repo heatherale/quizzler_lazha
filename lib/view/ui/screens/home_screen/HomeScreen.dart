@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'file:///E:/flutter_courses/quizzler-flutter/lib/view/ui/screens/home_screen/widgets/CourseTypeTile.dart';
+import 'package:quizzler/model/utils/QuestionType.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -18,8 +19,8 @@ class HomeScreen extends StatelessWidget {
         primary: false,
         crossAxisCount: 2,
         children: <Widget>[
-          CourseTypeTile('assets/images/true_or_false.png','True or false'),
-          CourseTypeTile('assets/images/multiple_answers.png','Multiple answers'),
+          CourseTypeTile('assets/images/true_or_false.png','True or false', QuestionType.trueorfalse),
+          CourseTypeTile('assets/images/multiple_answers.png','Multiple answers', QuestionType.oneanswer),
           CourseTypeTile('assets/images/coming_soon.jpg','Coming soon'),
           CourseTypeTile('assets/images/coming_soon.jpg','Coming soon'),
           CourseTypeTile('assets/images/coming_soon.jpg','Coming soon'),

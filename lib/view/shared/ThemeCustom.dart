@@ -8,5 +8,6 @@ ThemeData themeCustom = ThemeData(
       color: Colors.white,
       fontWeight: FontWeight.bold
     )
-  )
+  ),
+  unselectedWidgetColor: Colors.grey[800],
 );

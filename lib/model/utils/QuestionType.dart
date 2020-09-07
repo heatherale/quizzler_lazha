@@ -1,9 +1,9 @@
 enum QuestionType{
   trueorfalse,
-  fouroptions
+  oneanswer
 }
 
-final Map<QuestionType, String> typesOfQuestions = {
+final Map<QuestionType, String> urlParameters = {
   QuestionType.trueorfalse: 'truefalse',
-  QuestionType.fouroptions: 'oneanswer'
+  QuestionType.oneanswer: 'oneanswer'
 };

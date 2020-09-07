@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:quizzler/model/utils/QuestionType.dart';
+import 'package:quizzler/provider/TypeProvider.dart';
+import 'package:quizzler/view/shared/CustomRoute.dart';
 
 class CourseTypeTile extends StatelessWidget {
 
   final String _imagePath;
   final String _titleOfType;
+  final QuestionType _typeOfQuestions;
 
-  CourseTypeTile(this._imagePath, this._titleOfType);
+  CourseTypeTile(this._imagePath, this._titleOfType, [this._typeOfQuestions = null]);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        Provider.of<TypeProvider>(context, listen: false).setType(this._typeOfQuestions);
+        Navigator.pushNamed(
+          context,
+          CustomRoute.QUESTION_PAGE,
+        );
+      },
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       child: GridTile(
