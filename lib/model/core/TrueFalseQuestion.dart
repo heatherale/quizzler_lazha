@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:quizzler/model/core/Question.dart';
 
 class TrueFalseQuestion extends Question{
@@ -26,14 +25,6 @@ class TrueFalseQuestion extends Question{
 
   String get rightAnswer => this._rightAnswer;
 
-  @override
-  Map<String, dynamic> toMap() {
-    return {
-      'id':id,
-      "question":questionText,
-      "rightAnswer":rightAnswer
-    };
-  }
 
   @override
   bool checkAnswer(int index) {

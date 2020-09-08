@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/model/core/Question.dart';
-import 'package:quizzler/model/helpers/QuestionHelper.dart';
+import 'package:quizzler/model/services/QuestionService.dart';
 import 'package:quizzler/model/utils/QuestionType.dart';
 
 class QuestionProvider extends ChangeNotifier{
@@ -10,8 +10,7 @@ class QuestionProvider extends ChangeNotifier{
   int _testResult;
 
   Future<List<Question>> fetchData(QuestionType type) async {
-    List<Question> listToReturn =  await QuestionHelper(type).getQuestionList();
-    //print('PROVIDER HERE. I RETURNED A LIST '+listToReturn[0].questionText);
+    List<Question> listToReturn =  await QuestionService(type).getQuestionList();
     _currentList = listToReturn;
     return listToReturn;
   }
@@ -23,15 +22,16 @@ class QuestionProvider extends ChangeNotifier{
 
   int get currentIndex => _currentIndex;
 
-  //Question get currentQuestion => _currentIndex ==_currentList.length?null:_currentList[_currentIndex];
-
-  void moveToNextQuestion(int index){
-    if(_currentList[_currentIndex].checkAnswer(index)){
-      _testResult++;
-      print ("Test result" + _testResult.toString());
-    }
+  void moveToNextQuestion(){
     _currentIndex++;
     notifyListeners();
+  }
+
+  void checkAnswer(int index){
+    if(_currentList[_currentIndex].checkAnswer(index)){
+      _testResult++;
+      //print ("Test result" + _testResult.toString());
+    }
   }
 
   int get testResult => _testResult;

@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xfff4f4f4),
       appBar: AppBar(
+        leading: Icon(Icons.home, color: Colors.white,),
         title: Text("Choose a quiz"),
       ),
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/view/shared/ThemeCustom.dart';
-import 'dart:math';
 
 class CirclePainter extends CustomPainter{
 
@@ -14,9 +13,6 @@ class CirclePainter extends CustomPainter{
       ..color = themeCustom.primaryColor
       ..style = PaintingStyle.fill;
 
-    //canvas.drawArc(Rect.fromLTRB(0, 0, this.screenWidth, 300), pi, pi, false, painter);
-    /*path.addOval(Rect.fromLTRB(0, 0, this.screenWidth, 300));
-    canvas.drawPath(path, painter);*/
 
     const double _curveHeight = 35;
 

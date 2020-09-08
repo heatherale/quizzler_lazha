@@ -9,4 +9,9 @@ class ButtonProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  void resetSelection(){
+    currentSelectedIndex = -1;
+    notifyListeners();
+  }
+
 }

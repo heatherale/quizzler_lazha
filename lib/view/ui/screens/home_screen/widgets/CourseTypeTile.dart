@@ -17,11 +17,18 @@ class CourseTypeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Provider.of<TypeProvider>(context, listen: false).setType(this._typeOfQuestions);
-        Navigator.pushNamed(
-          context,
-          CustomRoute.QUESTION_PAGE,
-        );
+        if(this._typeOfQuestions==null){
+          Navigator.pushNamed(
+            context,
+            CustomRoute.UNDER_CONSTRUCTION_PAGE,
+          );
+        } else {
+          Provider.of<TypeProvider>(context, listen: false).setType(this._typeOfQuestions);
+          Navigator.pushNamed(
+            context,
+            CustomRoute.QUESTION_PAGE,
+          );
+        }
       },
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,

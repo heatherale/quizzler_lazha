@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:quizzler/model/core/OneAnswerQuestion.dart';
 import 'package:quizzler/model/core/Question.dart';
 import 'package:quizzler/model/core/TrueFalseQuestion.dart';
@@ -11,8 +8,6 @@ class QuestionFactory{
   QuestionType _type;
 
   QuestionFactory(this._type);
-
-  //Question fromJson(String source) => fromMap(json.decode(source));
 
   Question fromMap(Map<String,dynamic> map){
 
@@ -40,7 +35,7 @@ class QuestionFactory{
       } break;
     }
 
-    print('FACTORY HERE. HERE IS MY QUESTION'+questionToReturn.questionText);
+    //print('FACTORY HERE. HERE IS MY QUESTION'+questionToReturn.questionText);
     return questionToReturn;
     }
   }

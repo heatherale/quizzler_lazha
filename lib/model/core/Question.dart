@@ -1,7 +1,3 @@
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:quizzler/model/utils/QuestionType.dart';
-
 abstract class Question{
 
   int _id;
@@ -16,10 +12,6 @@ abstract class Question{
   List<String> get answers => this._answers;
 
   String get rightAnswer => this._rightAnswer;
-
-  Map<String,dynamic> toMap();
-
-  String toJson() => json.encode(toMap());
 
   bool checkAnswer(int index);
 
