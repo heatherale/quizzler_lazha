@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizzler/view/shared/CustomRoute.dart';
+import 'package:quizzler/view/shared/custom_route.dart';
 
 class BackToListButton extends StatelessWidget {
   @override

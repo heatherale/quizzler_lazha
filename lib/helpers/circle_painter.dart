@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizzler/view/shared/ThemeCustom.dart';
+import 'package:quizzler/view/shared/theme_custom.dart';
 
 class CirclePainter extends CustomPainter{
 

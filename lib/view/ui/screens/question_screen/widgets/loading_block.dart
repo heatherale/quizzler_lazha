@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:quizzler/view/shared/ThemeCustom.dart';
+import 'package:quizzler/view/shared/theme_custom.dart';
 
 class LoadingBlock extends StatelessWidget {
   @override
@@ -13,13 +12,7 @@ class LoadingBlock extends StatelessWidget {
           Text(
             'Loading course, please wait',
             textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold
-                )
-            ),
+            style: CustomTextStyles.loadingBlockStyle,
           ),
         ],
       ),

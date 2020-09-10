@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:quizzler/provider/QuestionProvider.dart';
-import 'package:quizzler/view/ui/screens/question_screen/widgets/BackToListButton.dart';
+import 'package:quizzler/provider/question_provider.dart';
+import 'package:quizzler/view/shared/assets.dart';
+import 'package:quizzler/view/shared/theme_custom.dart';
+import 'package:quizzler/view/ui/screens/question_screen/widgets/back_to_list_button.dart';
 
 class ResultScreen extends StatelessWidget {
   @override
@@ -16,21 +18,17 @@ class ResultScreen extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            isGoodResult?Image.asset('assets/images/win.jpg'):Image.asset('assets/images/lose.jpg'),
+            isGoodResult?Assets.winImage:Assets.loseImage,
             SizedBox(height: 20.0,),
             Text(
-              isGoodResult?"Congratulations! Your have earned "+userResult.toString()+" points":
-              "Do not worry! Today it is only "+userResult.toString()+" points, but we believe you can do it better!",
+              isGoodResult?'Congratulations! Your have earned ${userResult.toString()} points':
+              'Do not worry! Today it is only ${userResult.toString()} points, but we believe you can do it better!',
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
-                  )
+                  textStyle: CustomTextStyles.questionPageCommonStyle.copyWith(color: Colors.black)
               ),
             ),
-            SizedBox(height: 20.0,),
+            SizedBox(height:.0,),
             BackToListButton()
           ],
         ),
@@ -38,3 +36,4 @@ class ResultScreen extends StatelessWidget {
     );
   }
 }
+

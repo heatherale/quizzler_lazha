@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/flutter_courses/quizzler-flutter/lib/view/ui/screens/home_screen/HomeScreen.dart';
-import 'package:quizzler/view/ui/screens/question_screen/QuestionScreen.dart';
-import 'package:quizzler/view/ui/screens/result_screen/ResultScreen.dart';
-import 'package:quizzler/view/ui/screens/under_construction_screen/UnderConstructionScreen.dart';
+import 'package:quizzler/view/ui/screens/home_screen/home_screen.dart';
+import 'package:quizzler/view/ui/screens/question_screen/question_screen.dart';
+import 'package:quizzler/view/ui/screens/result_screen/result_screen.dart';
+import 'package:quizzler/view/ui/screens/under_construction_screen/under_construction_screen.dart';
 
 class CustomRoute{
 
   static const String HOME_SCREEN = '/';
-  static const String QUESTION_PAGE = 'question_page';
-  static const String RESULT_PAGE = 'result_page';
-  static const String UNDER_CONSTRUCTION_PAGE = 'under_construction_page';
+  static const String QUESTION_PAGE = '/question_page';
+  static const String RESULT_PAGE = '/result_page';
+  static const String UNDER_CONSTRUCTION_PAGE = '/under_construction_page';
 
   static Route<dynamic> generateRoute(RouteSettings settings){
 

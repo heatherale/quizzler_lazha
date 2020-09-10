@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:quizzler/provider/ButtonProvider.dart';
-import 'package:quizzler/view/ui/screens/question_screen/widgets/AnswerButton.dart';
+import 'answer_button.dart';
 
 class AnswerButtonsBlock extends StatelessWidget {
 
-  List<String> answers;
+  final List<String> answers;
 
   AnswerButtonsBlock(this.answers);
 
   @override
   Widget build(BuildContext context) {
-    print('ANSWERS '+this.answers.toString());
+    print('ANSWERS ${answers.toString()}');
     return Container(
       child: ListView.builder(
         itemCount: answers.length,

@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:quizzler/model/utils/QuestionType.dart';
-import 'package:quizzler/provider/TypeProvider.dart';
-import 'package:quizzler/view/shared/CustomRoute.dart';
+import 'package:quizzler/view/shared/custom_route.dart';
+import 'package:quizzler/view/shared/theme_custom.dart';
+
 
 class CourseTypeTile extends StatelessWidget {
 
-  final String _imagePath;
-  final String _titleOfType;
-  final QuestionType _typeOfQuestions;
+  final Image tileImage;
+  final String titleOfCourseType;
+  final VoidCallback tileCallback;
 
-  CourseTypeTile(this._imagePath, this._titleOfType, [this._typeOfQuestions = null]);
+  CourseTypeTile(this.tileImage, this.titleOfCourseType, [this.tileCallback = null]);
 
   @override
   Widget build(BuildContext context) {
+
     return InkWell(
       onTap: (){
-        if(this._typeOfQuestions==null){
+        if(tileCallback==null){
           Navigator.pushNamed(
             context,
             CustomRoute.UNDER_CONSTRUCTION_PAGE,
           );
         } else {
-          Provider.of<TypeProvider>(context, listen: false).setType(this._typeOfQuestions);
           Navigator.pushNamed(
             context,
             CustomRoute.QUESTION_PAGE,
+            arguments: tileCallback
           );
         }
       },
@@ -41,19 +40,15 @@ class CourseTypeTile extends StatelessWidget {
           ),
           child: Padding(
               padding: EdgeInsets.only(bottom: 40.0, top: 20.0),
-              child: Image.asset(this._imagePath)
+              child: tileImage
           ),
         ),
         footer: Padding(
           padding: EdgeInsets.only(bottom: 7.0),
           child: Text(
-            this._titleOfType,
+            titleOfCourseType,
             textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w600,
-                color: Color(0xff757575).withOpacity(0.9),
-                fontSize: 20.0
-            ),
+            style: CustomTextStyles.styleForCourseTypeTile
           ),
         ),
       ),

@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 
 class ButtonProvider extends ChangeNotifier{
 
-  int currentSelectedIndex = -1;
+  int _currentSelectedIndex = -1;
+
+  int get currentSelectedIndex => _currentSelectedIndex;
 
   void toggleSelected(int index) {
-    currentSelectedIndex = index;
+    _currentSelectedIndex = index;
     notifyListeners();
   }
 
   void resetSelection(){
-    currentSelectedIndex = -1;
+    _currentSelectedIndex = -1;
     notifyListeners();
   }
 

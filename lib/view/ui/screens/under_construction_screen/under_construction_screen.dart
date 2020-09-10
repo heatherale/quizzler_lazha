@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quizzler/view/ui/screens/question_screen/widgets/BackToListButton.dart';
+import 'package:quizzler/view/shared/assets.dart';
+import 'package:quizzler/view/shared/theme_custom.dart';
+import 'package:quizzler/view/ui/screens/question_screen/widgets/back_to_list_button.dart';
 
 class UnderConstructionScreen extends StatelessWidget {
   @override
@@ -11,22 +13,16 @@ class UnderConstructionScreen extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           Image.asset('assets/images/coming_soon.jpg'),
+           Assets.underConstructionImage,
             SizedBox(height: 20.0,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Text(
                 'This page is under construction. We will add more exciting courses soon!',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold
-                    )
+                style: CustomTextStyles.questionPageCommonStyle.copyWith(color: Colors.black)
                 ),
               ),
-            ),
             SizedBox(height: 20.0,),
             BackToListButton()
           ],
