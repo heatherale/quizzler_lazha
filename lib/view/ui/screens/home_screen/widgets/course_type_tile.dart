@@ -7,7 +7,7 @@ class CourseTypeTile extends StatelessWidget {
 
   final Image tileImage;
   final String titleOfCourseType;
-  final Future<List> tileCallback;
+  final Function tileCallback;
 
   CourseTypeTile(this.tileImage, this.titleOfCourseType, [this.tileCallback = null]);
 
@@ -25,8 +25,8 @@ class CourseTypeTile extends StatelessWidget {
           Navigator.pushNamed(
             context,
             CustomRoute.QUESTION_PAGE,
-            arguments: tileCallback
           );
+          tileCallback();
         }
       },
       highlightColor: Colors.transparent,

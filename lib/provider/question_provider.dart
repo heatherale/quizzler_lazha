@@ -13,26 +13,33 @@ class QuestionProvider extends ChangeNotifier{
 
   QuestionProvider(this._service);
 
-  Future<List<TrueOrFalseQuestionModel>>fetchTrueOrFalseQuestions() async {
+  Future<void>fetchTrueOrFalseQuestions() async {
+    startLoading();
     _currentList = await _service.getTrueOrFalseQuestionList();
-    print('TRUE FALSE $_currentList');
-    return _currentList;
+    setScoreToZero();
+    setIndexToZero();
+    /*print('TRUE FALSE ${_currentList[0].question}');
+    print('TRUE FALSE ${_currentList[1].question}');
+    print('TRUE FALSE ${_currentList[2].question}');
+    print('TRUE FALSE ${_currentList[3].question}');*/
+    stopLoading();
   }
 
-  Future<List<OneAnswerQuestionModel>>fetchOneAnswerQuestions() async {
+  Future<void>fetchOneAnswerQuestions() async {
+    startLoading();
     _currentList = await _service.getOneAnswerQuestionList();
-    print('ONE ANSWER $_currentList');
-    return _currentList;
+    //print('ONE ANSWER $_currentList');
+    setScoreToZero();
+    setIndexToZero();
+    stopLoading();
   }
 
   void setIndexToZero(){
     _currentIndex = 0;
-    notifyListeners();
   }
 
   void setScoreToZero(){
     _testResult = 0;
-    notifyListeners();
   }
 
   int get currentIndex => _currentIndex;
@@ -42,6 +49,7 @@ class QuestionProvider extends ChangeNotifier{
 
   void moveToNextQuestion(){
     _currentIndex++;
+    print(_currentIndex);
     notifyListeners();
   }
 
@@ -51,16 +59,15 @@ class QuestionProvider extends ChangeNotifier{
     }
   }
 
-
   void startLoading(){
     _isLoading = true;
-    print('start loading');
+    //print('start loading');
     notifyListeners();
   }
 
   void stopLoading(){
     _isLoading = false;
-    print('stop loading');
+    //print('stop loading');
     notifyListeners();
   }
 
