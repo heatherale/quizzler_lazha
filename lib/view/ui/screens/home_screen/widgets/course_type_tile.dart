@@ -7,7 +7,7 @@ class CourseTypeTile extends StatelessWidget {
 
   final Image tileImage;
   final String titleOfCourseType;
-  final VoidCallback tileCallback;
+  final Future<List> tileCallback;
 
   CourseTypeTile(this.tileImage, this.titleOfCourseType, [this.tileCallback = null]);
 

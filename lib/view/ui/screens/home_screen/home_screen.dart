@@ -26,8 +26,8 @@ class HomeScreen extends StatelessWidget {
         primary: false,
         crossAxisCount: 2,
         children: <Widget>[
-          CourseTypeTile(Assets.trueFalseImage, 'True or false', questionProvider.fetchTrueOrFalseQuestions),
-          CourseTypeTile(Assets.oneAnswerImage,'Multiple answers', questionProvider.fetchOneAnswerQuestions),
+          CourseTypeTile(Assets.trueFalseImage, 'True or false', questionProvider.fetchTrueOrFalseQuestions()),
+          CourseTypeTile(Assets.oneAnswerImage,'Multiple answers', questionProvider.fetchOneAnswerQuestions()),
           CourseTypeTile(Assets.underConstructionImage,'Coming soon'),
           CourseTypeTile(Assets.underConstructionImage,'Coming soon'),
           CourseTypeTile(Assets.underConstructionImage,'Coming soon'),

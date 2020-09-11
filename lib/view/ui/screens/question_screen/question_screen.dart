@@ -16,7 +16,7 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
 
-  VoidCallback futureCallback;
+  /*VoidCallback futureCallback;
   QuestionProvider notListenableQuestionProvider;
   QuestionProvider questionProvider;
   ButtonProvider notListenableButtonProvider;
@@ -33,18 +33,53 @@ class _QuestionScreenState extends State<QuestionScreen> {
       notListenableQuestionProvider.stopLoading();
     });
 
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
-    notListenableQuestionProvider = Provider.of<QuestionProvider>(context, listen: false);
-    questionProvider = Provider.of<QuestionProvider>(context);
-    notListenableButtonProvider = Provider.of<ButtonProvider>(context, listen: false);
-
+    QuestionProvider notListenableQuestionProvider = Provider.of<QuestionProvider>(context, listen: false);
+    QuestionProvider questionProvider = Provider.of<QuestionProvider>(context);
+    ButtonProvider notListenableButtonProvider = Provider.of<ButtonProvider>(context, listen: false);
+    Future<dynamic> futureCallback = ModalRoute.of(context).settings.arguments;
 
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    futureCallback = ModalRoute.of(context).settings.arguments;
+    return FutureBuilder(
+      future: futureCallback,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        List<Widget> widgetsToDisplay;
+        if(!snapshot.hasData){
+          widgetsToDisplay = [LoadingBlock()];
+        } else {
+          widgetsToDisplay = [
+            AppBar(
+              title: Text(
+                'Question ${(questionProvider.currentIndex + 1).toString()} / ${notListenableQuestionProvider.currentList.length.toString()}',
+              ),
+            ),
+
+            _buildQuestionHeader(screenWidth, questionProvider, notListenableQuestionProvider),
+
+            SizedBox(
+              height: 50.0,
+            ),
+
+            AnswerButtonsBlock(questionProvider.currentList[questionProvider.currentIndex].answers),
+
+            _buildNextButton(screenWidth, notListenableQuestionProvider, notListenableButtonProvider, context)
+          ];
+        }
+        return SafeArea(
+            child: Scaffold(
+            body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: widgetsToDisplay,
+        ),
+        ),
+        );
+      },
+    );
 
           return SafeArea(
             child: Scaffold(
